@@ -23,6 +23,7 @@ import {
   X,
   Youtube,
   Zap,
+  type LucideIcon,
 } from "lucide-react";
 
 import facadeAsset from "@/assets/ciclovolt-fachada-esquina.png.asset.json";
@@ -198,7 +199,7 @@ function SectionTitle({
 }
 
 function Index() {
-  const mapsKey = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY;
+  const mapsKey = import.meta.env["VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY"];
   const mapSrc = mapsKey
     ? `https://www.google.com/maps/embed/v1/place?key=${mapsKey}&q=place_id:ChIJ02uF8UoCzpQREwBFjprwyDs`
     : undefined;
@@ -320,12 +321,12 @@ function Index() {
           <div className="flex flex-col justify-center px-6 py-16 sm:px-12 lg:px-16 lg:py-20">
             <SectionTitle light eyebrow="Oficina especializada" title="Quem vende, entende. Quem entende, cuida." copy="Nossa assistência técnica própria acompanha seu veículo elétrico com conhecimento especializado e atendimento direto." />
             <div className="mt-10 grid gap-6 sm:grid-cols-2">
-              {[
+            {([
                 [Wrench, "Revisão especializada", "Diagnóstico, ajustes e manutenção preventiva para rodar com segurança."],
                 [BatteryCharging, "Baterias e elétrica", "Avaliação de bateria, sistema elétrico e componentes de recarga."],
                 [ShieldCheck, "Peças e suporte", "Orientação técnica e peças compatíveis para cuidar do seu investimento."],
                 [Zap, "Agilidade no atendimento", "Equipe próxima para solucionar dúvidas e necessidades do pós-venda."],
-              ].map(([Icon, title, copy]) => (
+              ] as Array<[LucideIcon, string, string]>).map(([Icon, title, copy]) => (
                 <div key={String(title)} className="border-t border-ink/20 pt-5">
                   <Icon className="h-6 w-6 text-brand" />
                   <h3 className="mt-4 font-display text-lg font-bold text-ink">{String(title)}</h3>
@@ -344,11 +345,11 @@ function Index() {
         <div className="mx-auto max-w-7xl">
           <SectionTitle eyebrow="Por que elétrico?" title="Menos gasto. Mais cidade." />
           <div className="mt-12 grid gap-px border border-border bg-border md:grid-cols-3">
-            {[
+            {([
               [BatteryCharging, "Economia que aparece", "Recarregue na tomada e reduza a dependência dos constantes aumentos da gasolina."],
               [Leaf, "Mobilidade mais limpa", "Sem emissão de gases durante o uso e com uma experiência urbana muito mais silenciosa."],
               [Gauge, "Praticidade no trânsito", "Veículos ágeis, fáceis de conduzir e ideais para percursos do dia a dia."],
-            ].map(([Icon, title, copy]) => (
+            ] as Array<[LucideIcon, string, string]>).map(([Icon, title, copy]) => (
               <div key={String(title)} className="bg-surface px-6 py-9 sm:px-8">
                 <Icon className="h-7 w-7 text-brand" />
                 <h3 className="mt-6 font-display text-xl font-bold">{String(title)}</h3>
@@ -438,12 +439,12 @@ function Index() {
           <div><h3 className="text-xs font-bold uppercase tracking-[0.15em]">Navegue</h3><div className="mt-5 space-y-3">{navItems.map(([label, href]) => <a key={href} href={href} className="block text-sm text-muted-foreground hover:text-brand">{label}</a>)}</div></div>
           <div><h3 className="text-xs font-bold uppercase tracking-[0.15em]">Contato</h3><div className="mt-5 space-y-3 text-sm text-muted-foreground"><a className="block hover:text-brand" href="tel:+551332245037">(13) 3224-5037</a><a className="block hover:text-brand" href="tel:+5513981678714">(13) 98167-8714</a><p>Seg–Sex · 10h às 18h</p><p>Av. Affonso Penna, 419<br />Macuco — Santos, SP</p></div></div>
           <div><h3 className="text-xs font-bold uppercase tracking-[0.15em]">Acompanhe</h3><div className="mt-5 flex gap-2">
-            {[
+            {([
               [Instagram, "Instagram", "https://www.instagram.com/ciclovoltveiculoseletricos"],
               [Facebook, "Facebook", "https://www.facebook.com/ciclovolt.veiculoseletricos"],
               [X, "X", "https://x.com/ciclovolt"],
               [Youtube, "YouTube", "https://www.youtube.com/channel/UCPgImJSh5jIxQWV6TajSf3w?view_as=subscriber"],
-            ].map(([Icon, label, href]) => <a key={String(label)} href={String(href)} target="_blank" rel="noreferrer" aria-label={String(label)} className="grid h-10 w-10 place-items-center border border-border text-muted-foreground transition-colors hover:border-brand hover:bg-brand hover:text-brand-foreground"><Icon className="h-4 w-4" /></a>)}
+            ] as Array<[LucideIcon, string, string]>).map(([Icon, label, href]) => <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label} className="grid h-10 w-10 place-items-center border border-border text-muted-foreground transition-colors hover:border-brand hover:bg-brand hover:text-brand-foreground"><Icon className="h-4 w-4" /></a>)}
           </div></div>
         </div>
         <div className="mx-auto flex max-w-7xl flex-col gap-2 pt-6 text-xs text-muted-foreground sm:flex-row sm:justify-between"><p>© 2026 Ciclovolt Mobilidade Elétrica.</p><p>Santos · São Paulo · Brasil</p></div>
